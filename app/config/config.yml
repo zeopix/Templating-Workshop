@@ -1,5 +1,5 @@
 imports:
-    - { resource: parameters.yml }
+    - { resource: parameters.ini }
     - { resource: security.yml }
 
 framework:
@@ -12,8 +12,8 @@ framework:
     csrf_protection: true
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-    default_locale:  %locale%
     session:
+        default_locale: %locale%
         auto_start:     true
 
 # Twig Configuration
@@ -25,7 +25,6 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
     # java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -55,7 +54,7 @@ swiftmailer:
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
-    spool:     { type: memory }
 
 jms_security_extra:
+    secure_controllers:  true
     secure_all_services: false
