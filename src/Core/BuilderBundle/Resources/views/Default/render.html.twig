@@ -1,0 +1,6 @@
+{% extends 'CoreBuilderBundle::layout.html.twig' %}
+{% block body %}
+	{% for key,node in schema %}
+		{% render ['CoreBuilderBundle:Component:',key]|join with {'node':node} %}
+	{% endfor %}
+{% endblock %}

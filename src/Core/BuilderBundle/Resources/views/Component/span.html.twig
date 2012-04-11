@@ -1,0 +1,10 @@
+	<div class="span{{ attributes.width }}{% if attributes.class is defined %} {{ attributes.class }}{% endif %}">
+		{{ attributes.content }}
+		{#
+		{% if attributes.items is not null %}
+		{% for key,node in attributes.items %}
+			{% render ['CoreBuilderBundle:Component:',key]|join with {'node':node} %}
+		{% endfor %}
+		{% endif %}
+		#}
+	</div>

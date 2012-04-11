@@ -1,0 +1,9 @@
+	<div class="row{% if attributes.class is defined %} {{ attributes.class }}{% endif %}">
+		{% if attributes.items is not null %}
+		{% for node in attributes.items %}
+			{% for key,item in node %}
+				{% render ['CoreBuilderBundle:Component:',key]|join with {'node':item} %}
+			{% endfor %}
+		{% endfor %}
+		{% endif %}
+	</div>

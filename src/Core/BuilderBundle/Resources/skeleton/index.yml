@@ -1,0 +1,25 @@
+navbar:
+    fixed: true
+    brand: BootstrapBuilder
+
+container:
+    fluid: false
+    items:
+       - row:
+            items:
+              - span: 
+                  width: 4
+                  content: Welcome back!
+              - span: 
+                  width: 4
+                  content: This is my content
+              - span: 
+                  width: 4
+                  content: This is right
+       - row:
+           items:
+              - span:
+                  width: 12
+                  class: well
+                  content: '<h1>Hi there world!</h1>'
+       
