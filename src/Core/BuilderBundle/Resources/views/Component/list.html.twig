@@ -1,0 +1,11 @@
+
+		<ul{% if node.attributes.class is defined %} class="{{ node.attributes.class }}"{% endif %}>
+		{% if node.items is not null %}
+		{% for item in node.items %}
+		{% render ['CoreBuilderBundle:Component:',item.name]|join with {'node':item, 'skeleton' : skeleton} %}
+		{% endfor %}
+		{% endif %}
+
+						{% render 'CoreBuilderBundle:Component:add' with {'skeleton': skeleton, 'node': node } %}
+
+            </ul>

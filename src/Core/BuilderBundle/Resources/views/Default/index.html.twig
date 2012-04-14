@@ -1,0 +1,45 @@
+{% extends 'CoreBuilderBundle::layout.html.twig' %}
+{% block style %}
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      img.main-image { width: 50px; }
+      .main.row .span3 img{}
+{% endblock %}
+{% block body %}
+<br><br>
+<div class="container">
+	<h1>OpenBuilder <small>v.0.1</small></h1>
+	<h4>OpenBuilder is a dynamic web site building engine, we congregate developers, designers, and users to offer the best web experience. And it's open source.</h4><br>
+	<hr class="soften">
+	<div class="main row">
+		<div class="span3 offset1">
+			<center><img class="main-image" src="{{ asset('bundles/corebuilder/icons/cloud-filled.png') }}"></center>
+			<h3>Developers</h4>
+			<p>Fork our project on github and suggest new features. Get involved into the first open source massive dynamic site builder. Get paid for premium features.</p>
+		</div>
+		<div class="span3">
+			<center><img class="main-image" src="{{ asset('bundles/corebuilder/icons/edit.png') }}"></center>
+			<h3>Designers</h4>
+			<p>Create cool website themes with a very simple interface, get paid for premium templates.</p>
+		</div>
+		<div class="span3">
+			<center><img class="main-image" src="{{ asset('bundles/corebuilder/icons/multi-agents.png') }}"></center>
+			<h3>Users</h4>
+			<p>Create fully customized web sites, incluing all kind of features like Social plugins, blog system, premium templates, etc.</p>
+		</div>
+	</div>
+	<hr class="soften">
+	<div class="row">
+		<div class="span8">
+			<h5>We're currently working hard on the builder core. Suscribe to get in touch.</h5>
+		</div>
+		<div class="span2 offset2">
+			<a class="btn btn-success btn-large" href="{{ path('builder_default_list') }}">Preview</a>
+		</div>
+</div>
+<hr>
+
+Icons by <a href="http://www.greepit.com/open-source-icons-gcons/" target="_blank">gcons</a>
+{% endblock %}

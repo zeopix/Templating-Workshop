@@ -1,9 +1,9 @@
-	<div class="row{% if attributes.class is defined %} {{ attributes.class }}{% endif %}">
-		{% if attributes.items is not null %}
-		{% for node in attributes.items %}
-			{% for key,item in node %}
-				{% render ['CoreBuilderBundle:Component:',key]|join with {'node':item} %}
-			{% endfor %}
+	<div class="row{% if node.attributes.fluid is defined and true %}-fluid{% endif %}{% if node.attributes.class is defined %} {{ attributes.class }}{% endif %}">
+		{% if node.items is not null %}
+			{% for item in node.items %}
+			{% render ['CoreBuilderBundle:Component:',item.name]|join with {'node':item, 'skeleton' : skeleton} %}
 		{% endfor %}
 		{% endif %}
+		
+		{% render 'CoreBuilderBundle:Component:add' with {'skeleton': skeleton, 'node': node } %}
 	</div>

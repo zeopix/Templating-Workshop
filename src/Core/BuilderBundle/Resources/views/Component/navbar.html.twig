@@ -1,4 +1,4 @@
- <div class="navbar{% if attributes.fixed %} navbar-fixed-top{% endif %}">
+ <div class="navbar{% if node.attributes.fixed is defined and true %} navbar-fixed-top{% endif %}">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -6,13 +6,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">{% if attributes.brand is defined %}{{ attributes.brand }}{% else %}Brand{% endif %}</a>
+          <a class="brand" href="#">{% if node.attributes.brand is defined %}{{ node.attributes.brand }}{% else %}Brand{% endif %}</a>
           <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
+         {% if node.items is defined %}
+		{% for item in node.items %}
+				{% render ['CoreBuilderBundle:Component:',item.name]|join with {'node':item, 'skeleton' : skeleton} %}
+		{% endfor %}
+		{% endif %}
+		
+				{% render 'CoreBuilderBundle:Component:add' with {'skeleton': skeleton, 'node': node } %}
+
+
           </div><!--/.nav-collapse -->
         </div>
       </div>

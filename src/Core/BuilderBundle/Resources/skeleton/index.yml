@@ -1,9 +1,24 @@
 navbar:
     fixed: true
     brand: BootstrapBuilder
+    items:
+       - list:
+           class: nav
+           items:
+               - element:
+                    active: false
+                    href: #
+                    caption: Home
+               - element:
+                    active: true
+                    href: #
+                    caption: Details
+               - element:
+                    active: false
+                    href: #
+                    caption: Logout
 
 container:
-    fluid: false
     items:
        - row:
             items:
@@ -12,14 +27,15 @@ container:
                   content: Welcome back!
               - span: 
                   width: 4
+                  class: none
                   content: This is my content
               - span: 
                   width: 4
                   content: This is right
+       - hr
        - row:
            items:
               - span:
                   width: 12
-                  class: well
-                  content: '<h1>Hi there world!</h1>'
+                  content: 'Hi there world!'
        

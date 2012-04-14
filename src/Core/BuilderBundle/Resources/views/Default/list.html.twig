@@ -1,0 +1,27 @@
+{% extends 'CoreBuilderBundle::layout.html.twig' %}
+{% block body %}
+<br>
+<div class="container">
+	<div class="row">
+		<div class="span9 offset1">
+			<h1>Plantillas</h1>
+			<table class="table table-striped">
+				<thead>
+					<th>Nombre</th>
+					<th>Acciones</th>
+				</thead>
+				{% for entity in entities %}
+				<tr>
+					<td>{{ entity.content }}</td>
+					<td width="40px"><a class="btn" href="{{ path('builder_default_render',{ 'skeleton' : entity.id }) }}">Render</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+			<form class="well" method="POST" enctype="{{ form_enctype(form) }}">
+				{{ form_widget(form) }}
+				<input class="btn btn-success" type="submit" value="Crear Plantilla">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

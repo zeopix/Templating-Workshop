@@ -1,6 +1,50 @@
 {% extends 'CoreBuilderBundle::layout.html.twig' %}
+{% block scripts %}
+{# when btn-config is fired, -> load config form #}
+$(function(){
+	$(".btn-config").click(function(){
+		var path = $(this).attr('data-load');
+		$.ajax({
+			url: path,
+			success: function(response){
+				$("#config .modal-body").html(response);
+			}
+		});
+	});
+})
+{% endblock %}
 {% block body %}
-	{% for key,node in schema %}
-		{% render ['CoreBuilderBundle:Component:',key]|join with {'node':node} %}
+	{% for node in skeleton.items %}
+		{% render ['CoreBuilderBundle:Component:',node.name]|join with {'node':node, 'skeleton' : skeleton} %}
 	{% endfor %}
+	
+	{% render 'CoreBuilderBundle:Component:add' with {'skeleton' : skeleton, 'node': skeleton } %}
+
+<hr>
+<center>
+<a href="{{ path('builder_default_edit',{ 'skeleton':skeleton.id}) }}">Activar Edición</a> - <a href="{{ path('builder_default_view',{ 'skeleton':skeleton.id}) }}">Desactivar Edición</a>
+</center>
+
+{% if app.session.get('edit') %}
+
+<!-- Config Modal -->
+<div class="modal hide" id="config">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Configuración del Elemento</h3>
+  </div>
+  <div class="modal-body">
+    <p>Here we should render the form…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn">Cancelar</a>
+    <a href="#" class="btn btn-primary">Guardar</a>
+  </div>
+</div>
+<!-- /modal -->
+
+{% endif %}
+
+
+
 {% endblock %}

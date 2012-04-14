@@ -11,10 +11,12 @@
     <!-- Le styles -->
     <link href="{{ asset('bundles/corebuilder/css/bootstrap.css') }}" rel="stylesheet">
     <style type="text/css">
+      {% block style %}
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
+      {% endblock %}
     </style>
     <link href="{{ asset('bundles/corebuilder/css/bootstrap-responsive.css') }}" rel="stylesheet">
 
@@ -22,6 +24,13 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+	
+	<script src="{{ asset('bundles/corebuilder/js/jquery.js') }}"></script>
+
+    <script>
+    {% block scripts %}
+    {% endblock %}
+    </script>
   </head>
 
   <body>
@@ -31,7 +40,6 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{ asset('bundles/corebuilder/js/jquery.js') }}"></script>
     <script src="{{ asset('bundles/corebuilder/js/bootstrap.min.js') }}"></script>
 
   </body>

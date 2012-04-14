@@ -1,0 +1,1 @@
+<li{% if node.attributes.class is defined %} class="{{ node.attributes.class }}"{% endif %}><a href="{% if node.attributes.href is defined %}{{ node.attributes.href }}{% endif%}">{{ node.content }}</a></li>

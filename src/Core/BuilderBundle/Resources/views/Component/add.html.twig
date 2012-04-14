@@ -1,11 +1,20 @@
-<div class="btn-group">
+{% if app.session.get('edit') %}
+<div class="btn-group pull-right" style="margin-left: 5px;">
   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
     Añadir
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="#">Navegación</a></li>
-    <li><a href="#">Fila</a></li>
-    <li><a href="#">Bloque</a></li>
+    <li><a href="{{ path('builder_component_add',{ 'skeleton' : skeleton.id, 'node': node.id, 'name' : 'navbar' }) }}">Navegación</a></li>
+    <li><a href="{{ path('builder_component_add',{ 'skeleton' : skeleton.id, 'node': node.id, 'name' : 'container' }) }}">Contenedor</a></li>
+    <li><a href="{{ path('builder_component_add',{ 'skeleton' : skeleton.id, 'node': node.id, 'name' : 'row' }) }}">Fila</a></li>
+    <li><a href="{{ path('builder_component_add',{ 'skeleton' : skeleton.id, 'node': node.id, 'name' : 'list' }) }}">Lista</a></li>
+    <li><a href="{{ path('builder_component_add',{ 'skeleton' : skeleton.id, 'node': node.id, 'name' : 'element' }) }}">Elemento</a></li>
+	<li class="divider"></li>
+    <li><a href="{{ path('builder_component_add',{ 'skeleton' : skeleton.id, 'node': node.id, 'name' : 'span'}) }}">Span</a></li>
   </ul>
 </div>
+<a href="#" class="btn pull-right" style="margin-left: 5px;"><b class="icon-align-left"> </b></a>
+<a data-toggle="modal" data-load="{{ path('builder_component_config', { 'skeleton' : skeleton.id, 'node' : node.getId() } ) }}" href="#config" class="btn btn-config pull-right" style="margin-left: 5px;"><b class="icon-cog"> </b></a>
+
+{% endif %}
